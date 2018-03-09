@@ -5,11 +5,12 @@ import { Country } from '../models/countries';
 import { League } from '../models/league';
 import { Team } from '../models/team';
 import { Player } from '../models/player';
+import { DocumentService } from '../document.service';
 
 @Component({
   selector: 'app-country-select-component-stat',
   templateUrl: './country-select-component-stat.component.html',
-  providers: [DataService],
+  providers: [DataService, DocumentService],
   styleUrls: ['./country-select-component-stat.component.css']
 })
 export class CountrySelectComponentStatComponent implements OnInit {
@@ -37,7 +38,7 @@ export class CountrySelectComponentStatComponent implements OnInit {
   };
   currentPlayer: Player = this.initialObject;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private docService: DocumentService) {
   }
 
   ngOnInit() {
@@ -96,5 +97,9 @@ export class CountrySelectComponentStatComponent implements OnInit {
     this.teams = [];
     this.players = [];
     this.currentPlayer = this.initialObject;
+  }
+
+  generateDoc() {
+    this.docService.getPlayerDocument(this.currentPlayer.id, this.currentPlayer.name + this.currentPlayer.surname);
   }
 }

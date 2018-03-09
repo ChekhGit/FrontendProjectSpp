@@ -20,7 +20,7 @@
 						</span>
 					</h3>
 					<select class="form-control" id="league" required (change)="onLeagueChange($event)">
-							<option value="-1">--no value--</option>
+						<option value="-1">--no value--</option>
 						<option *ngFor="let league of leagues" [value]="league.id">{{league.name}}</option>
 					</select>
 				</div>
@@ -31,7 +31,7 @@
 						</span>
 					</h3>
 					<select class="form-control" id="team" required (change)="onTeamChange($event)">
-							<option value="-1">--no value--</option>
+						<option value="-1">--no value--</option>
 						<option *ngFor="let team of teams" [value]="team.id">{{team.name}}</option>
 					</select>
 				</div>
@@ -42,18 +42,21 @@
 						</span>
 					</h3>
 					<select class="form-control" id="player" required (change)="onPlayerChange($event)">
-							<option value="-1">--no value--</option>
+						<option value="-1">--no value--</option>
 						<option *ngFor="let player of players" [value]="player.id">{{player.name}} {{player.surname}}</option>
 					</select>
 				</div>
 				<div class="row">
-				<button class="btn btn-info clear-all" (click)="clearAll()">Clear</button>
-			</div>
+					<button class="btn btn-info clear-all" (click)="clearAll()">Clear</button>
+				</div>
+				<div class="row">
+					<button class="btn btn-info gen-doc" (click)="generateDoc()">Get Document</button>
+				</div>
 			</div>
 		</div>
 		<div class="container col-lg-8">
-			
-				<app-player-info-component-stat [player]="currentPlayer"></app-player-info-component-stat>
+
+			<app-player-info-component-stat [player]="currentPlayer"></app-player-info-component-stat>
 
 		</div>
 	</div>
