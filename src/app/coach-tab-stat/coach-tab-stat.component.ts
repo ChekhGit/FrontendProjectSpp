@@ -44,9 +44,9 @@ export class CoachTabStatComponent implements OnInit {
   teams: Team[] = [];
   observableCoaches: Observable<Coach[]>;
   coaches: Coach[] = [];
-  currentCoach: Coach = {
+  private initialObject: Coach = {
     id:0,
-    name:"",
+    name:"Name",
     surname:"",
     idStatistic:"",
     lostMatches:"",
@@ -55,6 +55,7 @@ export class CoachTabStatComponent implements OnInit {
     titles:"",
     yearsOld:""
   };
+  currentCoach: Coach = this.initialObject;
 
   constructor(private dataService: DataService){
   }
@@ -73,17 +74,7 @@ export class CoachTabStatComponent implements OnInit {
     this.leagues = [];
     this.teams = [];
     this.coaches = [];
-    this.currentCoach = {
-      id:0,
-      name:"",
-      surname:"",
-      idStatistic:"",
-      lostMatches:"",
-      winMatches:"",
-      drawMatches:"",
-      titles:"",
-      yearsOld:""
-    };
+    this.currentCoach = this.initialObject;
   }
   onLeagueChange(event) {
     this.observableTeams = this.dataService.getTeamByLeague(event.target.value);
@@ -92,17 +83,7 @@ export class CoachTabStatComponent implements OnInit {
     );
     this.teams = [];
     this.coaches = [];
-    this.currentCoach = {
-      id:0,
-      name:"",
-      surname:"",
-      idStatistic:"",
-      lostMatches:"",
-      winMatches:"",
-      drawMatches:"",
-      titles:"",
-      yearsOld:""
-    };
+    this.currentCoach = this.initialObject;
   }
   onTeamChange(event) {
     this.observableCoaches = this.dataService.getCoachByTeam(event.target.value);
@@ -110,17 +91,7 @@ export class CoachTabStatComponent implements OnInit {
       (coaches) => this.coaches = coaches
     );
     this.coaches = [];
-    this.currentCoach = {
-      id:0,
-      name:"",
-      surname:"",
-      idStatistic:"",
-      lostMatches:"",
-      winMatches:"",
-      drawMatches:"",
-      titles:"",
-      yearsOld:""
-    };
+    this.currentCoach = this.initialObject;
   }
   onCoachChange(event) {
     this.currentCoach = this.coaches.filter(el => el.id === event.target.value)[0];
@@ -141,28 +112,9 @@ export class CoachTabStatComponent implements OnInit {
     console.log(this.selectedValues);
   }
   clearAll() {
+    this.leagues = [];
     this.teams = [];
     this.coaches = [];
-    this.currentCoach = {
-      id:0,
-      name:"",
-      surname:"",
-      idStatistic:"",
-      lostMatches:"",
-      winMatches:"",
-      drawMatches:"",
-      titles:"",
-      yearsOld:""
-    };
-  }
-  getStat(){
-    if (!this.selectedValues.length) {
-      alert("Please, set value in all select boxes!");
-    } else {
-      
-    }
-  }
-  getCountryName(){
-    //this.selects[0].items = this.dataService.getCountryName();
+    this.currentCoach = this.initialObject;
   }
 }

@@ -13,28 +13,6 @@ import { Player } from '../models/player';
   styleUrls: ['./country-select-component-stat.component.css']
 })
 export class CountrySelectComponentStatComponent  implements OnInit   {
-    powers = ['Really Smart', 'Super Flexible',
-  'Super Hot', 'Weather Changer'];
-  selects = [
-    {
-    label:'Country',
-    items:[]
-  },
-  {
-    label:'League',
-    items:[{id:0,name:"APL"},{id:1,name:"AAAA"}]
-  },
-  {
-    label:'Team',
-    items:[{id:0,name:"123qedw"},{id:1,name:"2143534"}]
-  },
-  {
-    label:'Player',
-    items:[{id:0,name:"////////"},{id:1,name:"+++++++++"}]
-  }];
-
-  selectedValues = [];
-
   observableCoutries: Observable<Country[]>;
   countries: Country[] = [];
   observableLeagues: Observable<League[]>;
@@ -43,9 +21,9 @@ export class CountrySelectComponentStatComponent  implements OnInit   {
   teams: Team[] = [];
   observablePlayers: Observable<Player[]>;
   players: Player[] = [];
-  currentPlayer: Player = {
+  private initialObject: Player = {
     id:0,
-    name:"",
+    name:"Name",
     surname:"",
     position:"",
     idStatistic:"",
@@ -57,6 +35,7 @@ export class CountrySelectComponentStatComponent  implements OnInit   {
     redCards:"",
     yellowCards:""
   };
+  currentPlayer: Player = this.initialObject;
 
   constructor(private dataService: DataService){
   }
@@ -75,20 +54,7 @@ export class CountrySelectComponentStatComponent  implements OnInit   {
     this.leagues = [];
     this.teams = [];
     this.players = [];
-    this.currentPlayer = {
-      id:0,
-      name:"",
-      surname:"",
-      position:"",
-      idStatistic:"",
-      lostMatches:"",
-      winMatches:"",
-      drawMatches:"",
-      goals:"",
-      keyPasses:"",
-      redCards:"",
-      yellowCards:""
-    };
+    this.currentPlayer = this.initialObject;
   }
   onLeagueChange(event) {
     this.observableTeams = this.dataService.getTeamByLeague(event.target.value);
@@ -97,20 +63,7 @@ export class CountrySelectComponentStatComponent  implements OnInit   {
     );
     this.teams = [];
     this.players = [];
-    this.currentPlayer = {
-      id:0,
-      name:"",
-      surname:"",
-      position:"",
-      idStatistic:"",
-      lostMatches:"",
-      winMatches:"",
-      drawMatches:"",
-      goals:"",
-      keyPasses:"",
-      redCards:"",
-      yellowCards:""
-    };
+    this.currentPlayer = this.initialObject;
   }
   onTeamChange(event) {
     this.observablePlayers = this.dataService.getPlayerByTeam(event.target.value);
@@ -118,65 +71,16 @@ export class CountrySelectComponentStatComponent  implements OnInit   {
       (players) => this.players = players
     );
     this.players = [];
-    this.currentPlayer = {
-      id:0,
-      name:"",
-      surname:"",
-      position:"",
-      idStatistic:"",
-      lostMatches:"",
-      winMatches:"",
-      drawMatches:"",
-      goals:"",
-      keyPasses:"",
-      redCards:"",
-      yellowCards:""
-    };
+    this.currentPlayer = this.initialObject;
   }
   onPlayerChange(event) {
     this.currentPlayer = this.players.filter(el => el.id === event.target.value)[0];
   }
-  onChange(event) {
-    let selectedValue = event.target.value;
-    let selectedType = event.target.getAttribute('id').toLowerCase();
-    let prior;
-    console.log(selectedType);
-    switch (selectedType) {
-      case "country": prior = 0; break;
-      case "league": prior = 1; break;
-      case "team": prior = 2; break;
-      default: prior = 3; break;
-    }
-    this.selectedValues = this.selectedValues.filter((el)=>el.priority < prior);
-    this.selectedValues.push({type:selectedType,id:selectedValue,priority:prior});
-    console.log(this.selectedValues);
-  }
+
   clearAll() {
+    this.leagues = [];
     this.teams = [];
     this.players = [];
-    this.currentPlayer = {
-      id:0,
-      name:"",
-      surname:"",
-      position:"",
-      idStatistic:"",
-      lostMatches:"",
-      winMatches:"",
-      drawMatches:"",
-      goals:"",
-      keyPasses:"",
-      redCards:"",
-      yellowCards:""
-    };
-  }
-  getStat(){
-    if (!this.selectedValues.length) {
-      alert("Please, set value in all select boxes!");
-    } else {
-      
-    }
-  }
-  getCountryName(){
-    //this.selects[0].items = this.dataService.getCountryName();
+    this.currentPlayer = this.initialObject;
   }
 }
