@@ -50,7 +50,7 @@
 					<button class="btn btn-info clear-all" (click)="clearAll()">Clear</button>
 				</div>
 				<div class="row">
-					<button class="btn btn-info gen-doc" (click)="generateDoc()">Get Document</button>
+					<button class="btn btn-info gen-doc" (click)="generateDoc()" [style.display] = "currentPlayer.surname ? 'block' : 'none'">Get Document</button>
 				</div>
 			</div>
 		</div>
