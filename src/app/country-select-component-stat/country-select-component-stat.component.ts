@@ -93,7 +93,6 @@ export class CountrySelectComponentStatComponent implements OnInit {
   }
 
   clearAll() {
-    this.leagues = [];
     this.teams = [];
     this.players = [];
     this.currentPlayer = this.initialObject;

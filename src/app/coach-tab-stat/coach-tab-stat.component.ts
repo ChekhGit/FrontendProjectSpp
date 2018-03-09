@@ -6,36 +6,15 @@ import { League } from '../models/league';
 import { Team } from '../models/team';
 import { Player } from '../models/player';
 import { Coach } from '../models/coach';
+import { DocumentService } from '../document.service';
 
 @Component({
   selector: 'app-coach-tab-stat',
   templateUrl: './coach-tab-stat.component.html',
-  providers: [DataService],
+  providers: [DataService, DocumentService],
   styleUrls: ['./coach-tab-stat.component.css']
 })
 export class CoachTabStatComponent implements OnInit {
-  powers = ['Really Smart', 'Super Flexible',
-    'Super Hot', 'Weather Changer'];
-  selects = [
-    {
-      label: 'Country',
-      items: []
-    },
-    {
-      label: 'League',
-      items: [{ id: 0, name: "APL" }, { id: 1, name: "AAAA" }]
-    },
-    {
-      label: 'Team',
-      items: [{ id: 0, name: "123qedw" }, { id: 1, name: "2143534" }]
-    },
-    {
-      label: 'Player',
-      items: [{ id: 0, name: "////////" }, { id: 1, name: "+++++++++" }]
-    }];
-
-  selectedValues = [];
-
   observableCoutries: Observable<Country[]>;
   countries: Country[] = [];
   observableLeagues: Observable<League[]>;
@@ -57,7 +36,7 @@ export class CoachTabStatComponent implements OnInit {
   };
   currentCoach: Coach = this.initialObject;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private docService: DocumentService) {
   }
 
   ngOnInit() {
@@ -111,9 +90,12 @@ export class CoachTabStatComponent implements OnInit {
     }
   }
   clearAll() {
-    this.leagues = [];
     this.teams = [];
     this.coaches = [];
     this.currentCoach = this.initialObject;
+  }
+
+  generateDoc() {
+    this.docService.getCoachDocument(this.currentCoach.id, this.currentCoach.name + this.currentCoach.surname);
   }
 }

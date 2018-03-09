@@ -9,7 +9,7 @@
 						</span>
 					</h3>
 					<select class="form-control" id="country" required (change)="onCountryChange($event)">
-							<option value="-1">--no value--</option>
+						<option value="-1">--no value--</option>
 						<option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
 					</select>
 				</div>
@@ -20,7 +20,7 @@
 						</span>
 					</h3>
 					<select class="form-control" id="league" required (change)="onLeagueChange($event)">
-							<option value="-1">--no value--</option>
+						<option value="-1">--no value--</option>
 						<option *ngFor="let league of leagues" [value]="league.id">{{league.name}}</option>
 					</select>
 				</div>
@@ -31,7 +31,7 @@
 						</span>
 					</h3>
 					<select class="form-control" id="team" required (change)="onTeamChange($event)">
-							<option value="-1">--no value--</option>
+						<option value="-1">--no value--</option>
 						<option *ngFor="let team of teams" [value]="team.id">{{team.name}}</option>
 					</select>
 				</div>
@@ -42,13 +42,16 @@
 						</span>
 					</h3>
 					<select class="form-control" id="coach" required (change)="onCoachChange($event)">
-							<option value="-1">--no value--</option>
+						<option value="-1">--no value--</option>
 						<option *ngFor="let coach of coaches" [value]="coach.id">{{coach.name}} {{coach.surname}}</option>
 					</select>
 				</div>
 				<div class="row">
-						<button class="btn btn-info clear-all" (click)="clearAll()">Clear</button>
-					</div>
+					<button class="btn btn-info clear-all" (click)="clearAll()">Clear</button>
+				</div>
+				<div class="row">
+					<button class="btn btn-info gen-doc" (click)="generateDoc()">Get Document</button>
+				</div>
 			</div>
 		</div>
 		<div class="col-lg-8">

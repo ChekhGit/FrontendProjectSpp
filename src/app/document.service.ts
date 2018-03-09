@@ -13,30 +13,37 @@ export class DocumentService {
 
   status: string = "";
   private infoName: string = "";
+
   getPlayerDocument(id, infoName){
     this.infoName = infoName;
     this.http.get('http://localhost:8081/document/player/' + id + '/report').subscribe(
-      data => this.checkStatus(id));
+      data => this.checkStatus(data['fileId'], '.docx'));
   }
-  private checkStatus(id) {
+  getCoachDocument(id,infoName){
+    this.infoName = infoName;
+    this.http.get('http://localhost:8081/document/coach/' + id + '/report').subscribe(
+      data => this.checkStatus(data['fileId'], '.pdf'));
+  }
+
+  private checkStatus(id, format) {
     let observ = this.http.get('http://localhost:8081/document/' + id + '/check').
         map(this.getStatus);
         observ.subscribe(
           (data) => {
             if (data['status'] === 'Creating') {
-              this.checkStatus(id);
+              this.checkStatus(id, format);
             } else {
-              this.downloadFile(id);
+              this.downloadFile(id, format);
             }
           }
         );
   }
-  downloadFile(id){
+  downloadFile(id, format){
     this.http.get('http://localhost:8081/document/' + id + '/download', {responseType:"blob"})
    .subscribe(data=>{
       var url = window.URL.createObjectURL(data);
       var anchor = document.createElement("a");
-      anchor.download = this.infoName + ".docx";
+      anchor.download = this.infoName + format;
       anchor.href = url;
       anchor.click();
    });
