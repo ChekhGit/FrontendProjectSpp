@@ -1,0 +1,57 @@
+<div class="container">
+		<div class="row col-lg-offset-3">
+			<div class="col-lg-4">
+				<div class="form-group">
+					<div class="row">
+						<h3>
+							<span class="label">Country
+								<span class="badge"></span>
+							</span>
+						</h3>
+						<select class="form-control" id="country" required (change)="onCountryChange($event)">
+							<option> </option>
+							<option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+						</select>
+					</div>
+					<div class="row">
+							<h3>
+								<span class="label">League
+									<span class="badge"></span>
+								</span>
+							</h3>
+							<select class="form-control" id="league" required (change)="onLeagueChange($event)">
+									<option > </option>
+								<option *ngFor="let league of leagues" [value]="league.id">{{league.name}}</option>
+							</select>
+						</div>
+						<div class="row">
+								<h3>
+									<span class="label">Team
+										<span class="badge"></span>
+									</span>
+								</h3>
+								<select class="form-control" id="team" required (change)="onTeamChange($event)">
+										<option > </option>
+									<option *ngFor="let team of teams" [value]="team.id">{{team.name}}</option>
+								</select>
+							</div>
+						<div class="row">
+									<h3>
+										<span class="label">Coach
+											<span class="badge"></span>
+										</span>
+									</h3>
+									<select class="form-control" id="coach" required (change)="onCoachChange($event)">
+											<option > </option>
+										<option *ngFor="let coach of coaches" [value]="coach.id">{{coach.name}} {{coach.surname}}</option>
+									</select>
+								</div> 
+					<button class="btn btn-info genDoc" (click)="getStat()">Get Statistic</button>
+					<button class="btn btn-info genDoc" (click)="clearAll()">Clear</button>
+				</div>
+			</div>
+			<div class="col-lg-8">
+				<app-coach-info-component-stat [coach]="currentCoach"></app-coach-info-component-stat>
+			</div>
+		</div>
+	</div>
