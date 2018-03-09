@@ -42,6 +42,9 @@ export class CountrySelectComponentStatComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCountryList();
+  }
+  getCountryList() {
     this.observableCoutries = this.dataService.getCountryName();
     this.observableCoutries.subscribe(
       (countries) => this.countries = countries
@@ -93,6 +96,9 @@ export class CountrySelectComponentStatComponent implements OnInit {
   }
 
   clearAll() {
+    this.countries = [];
+    this.getCountryList();
+    this.leagues = [];
     this.teams = [];
     this.players = [];
     this.currentPlayer = this.initialObject;

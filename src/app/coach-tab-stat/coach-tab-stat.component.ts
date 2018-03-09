@@ -40,6 +40,9 @@ export class CoachTabStatComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCountryList();
+  }
+  getCountryList() {
     this.observableCoutries = this.dataService.getCountryName();
     this.observableCoutries.subscribe(
       (countries) => this.countries = countries
@@ -90,6 +93,9 @@ export class CoachTabStatComponent implements OnInit {
     }
   }
   clearAll() {
+    this.countries = [];
+    this.getCountryList();
+    this.leagues = [];
     this.teams = [];
     this.coaches = [];
     this.currentCoach = this.initialObject;
