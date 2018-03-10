@@ -30,15 +30,18 @@ export class DocumentService {
         map(this.getStatus);
         observ.subscribe(
           (data) => {
+            setTimeout(()=>{
             if (data['status'] === 'Creating') {
               this.checkStatus(id, format);
             } else {
               this.downloadFile(id, format);
             }
+          }, 2000);
           }
         );
   }
   downloadFile(id, format){
+   // window.location.href = 'http://localhost:8081/document/' + id + '/download';
     this.http.get('http://localhost:8081/document/' + id + '/download', {responseType:"blob"})
    .subscribe(data=>{
       var url = window.URL.createObjectURL(data);

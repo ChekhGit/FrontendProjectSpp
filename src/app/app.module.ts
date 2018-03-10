@@ -9,6 +9,7 @@ import { CountrySelectComponentStatComponent } from './country-select-component-
 import { PlayerInfoComponentStatComponent } from './player-info-component-stat/player-info-component-stat.component';
 import { CoachTabStatComponent } from './coach-tab-stat/coach-tab-stat.component';
 import { CoachInfoComponentStatComponent } from './coach-info-component-stat/coach-info-component-stat.component';
+import { ShareComponentComponent } from './share-component/share-component.component';
 
 
 @NgModule({
@@ -18,13 +19,14 @@ import { CoachInfoComponentStatComponent } from './coach-info-component-stat/coa
     CountrySelectComponentStatComponent,
     PlayerInfoComponentStatComponent,
     CoachTabStatComponent,
-    CoachInfoComponentStatComponent
+    CoachInfoComponentStatComponent,
+    ShareComponentComponent
 
   ],
   imports: [
     NgbModule.forRoot(),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
