@@ -2,6 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import {RouterModule, Routes } from '@angular/router';
+import {MatTableModule} from '@angular/material/table';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { TabsComponentStatisticComponent } from './tabs-component-statistic/tabs-component-statistic.component';
@@ -10,7 +15,9 @@ import { PlayerInfoComponentStatComponent } from './player-info-component-stat/p
 import { CoachTabStatComponent } from './coach-tab-stat/coach-tab-stat.component';
 import { CoachInfoComponentStatComponent } from './coach-info-component-stat/coach-info-component-stat.component';
 import { ShareComponentComponent } from './share-component/share-component.component';
-
+import { NavbarComponentComponent } from './navbar-component/navbar-component.component';
+import { ControlComponentComponent } from './control-component/control-component.component';
+import { TableCountryComponentComponent } from './table-country-component/table-country-component.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +27,19 @@ import { ShareComponentComponent } from './share-component/share-component.compo
     PlayerInfoComponentStatComponent,
     CoachTabStatComponent,
     CoachInfoComponentStatComponent,
-    ShareComponentComponent
-
+    ShareComponentComponent,
+    NavbarComponentComponent,
+    ControlComponentComponent,
+    TableCountryComponentComponent
   ],
   imports: [
     NgbModule.forRoot(),
     BrowserModule,
     HttpClientModule,
+    MatTableModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
