@@ -18,6 +18,10 @@ import { ShareComponentComponent } from './share-component/share-component.compo
 import { NavbarComponentComponent } from './navbar-component/navbar-component.component';
 import { ControlComponentComponent } from './control-component/control-component.component';
 import { TableCountryComponentComponent } from './table-country-component/table-country-component.component';
+import { TableLeagueComponentComponent } from './table-league-component/table-league-component.component';
+import { TableTeamComponentComponent } from './table-team-component/table-team-component.component';
+import { TablePlayerComponentComponent } from './table-player-component/table-player-component.component';
+import { TableCoachComponentComponent } from './table-coach-component/table-coach-component.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { TableCountryComponentComponent } from './table-country-component/table-
     ShareComponentComponent,
     NavbarComponentComponent,
     ControlComponentComponent,
-    TableCountryComponentComponent
+    TableCountryComponentComponent,
+    TableLeagueComponentComponent,
+    TableTeamComponentComponent,
+    TablePlayerComponentComponent,
+    TableCoachComponentComponent
   ],
   imports: [
     NgbModule.forRoot(),

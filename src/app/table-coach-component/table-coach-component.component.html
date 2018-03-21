@@ -1,0 +1,45 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="surname">
+      <mat-header-cell *matHeaderCellDef> Surname </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.surname}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="years">
+      <mat-header-cell *matHeaderCellDef> Years old </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.yearsOld}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="titles">
+      <mat-header-cell *matHeaderCellDef> Titles </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.titles}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lost">
+      <mat-header-cell *matHeaderCellDef> Lost </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.lostMatches}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="wins">
+      <mat-header-cell *matHeaderCellDef> Wins </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.winMatches}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="draws">
+      <mat-header-cell *matHeaderCellDef> Draws </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.drawMatches}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

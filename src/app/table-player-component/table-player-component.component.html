@@ -1,0 +1,56 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="surname">
+      <mat-header-cell *matHeaderCellDef> Surname </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.surname}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> Position </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lost">
+      <mat-header-cell *matHeaderCellDef> Lost </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.lostMatches}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="wins">
+      <mat-header-cell *matHeaderCellDef> Wins </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.winMatches}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="draws">
+      <mat-header-cell *matHeaderCellDef> Draws </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.drawMatches}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="goals">
+      <mat-header-cell *matHeaderCellDef> Goals </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.goals}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="passes">
+      <mat-header-cell *matHeaderCellDef> Passes </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.keyPasses}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="red">
+      <mat-header-cell *matHeaderCellDef> Red c. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.redCards}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="yellow">
+      <mat-header-cell *matHeaderCellDef> Yellow c. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.yellowCards}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
