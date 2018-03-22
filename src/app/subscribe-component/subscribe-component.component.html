@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+  <div class="form-group">
+    <label for="inputEmail" class="control-label">Subscribe on your favourite team!:</label>
+    <input #emailBox type="email" class="form-control" id="inputEmail" placeholder="Email" [style.border]="isCorrectEmail ? 'none' : '2px solid red'" data-error="Email is incorrect!" 
+    required>
+    <div ></div>
+  </div>
+    <button class="btn btn-danger" (click)="subscribe(emailBox.value)">Subscribe</button>
+  </div>
+</div>

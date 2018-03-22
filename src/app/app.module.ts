@@ -23,6 +23,7 @@ import { TableTeamComponentComponent } from './table-team-component/table-team-c
 import { TablePlayerComponentComponent } from './table-player-component/table-player-component.component';
 import { TableCoachComponentComponent } from './table-coach-component/table-coach-component.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { SubscribeComponentComponent } from './subscribe-component/subscribe-component.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AppRoutingModule } from './/app-routing.module';
     TableLeagueComponentComponent,
     TableTeamComponentComponent,
     TablePlayerComponentComponent,
-    TableCoachComponentComponent
+    TableCoachComponentComponent,
+    SubscribeComponentComponent
   ],
   imports: [
     NgbModule.forRoot(),

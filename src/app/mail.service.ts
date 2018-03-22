@@ -12,6 +12,11 @@ export class MailService {
     subscribe((data)=>{ alert("Completed!")})
   }
 
+  subscribeTo(idTeam, email) {
+    this.http.post('http://localhost:8081//team/' + idTeam + '/distribution', {email: email}).
+    subscribe((data)=>{ alert("Completed!")})
+  }
+
   isValidEmail(email) {
     let filter = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return filter.test(email);
