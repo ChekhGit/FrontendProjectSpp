@@ -8,11 +8,12 @@ import { DataService } from '../data.service';
 import { ThrowStmt } from '@angular/compiler';
 import { TableCountryComponentComponent } from '../table-country-component/table-country-component.component';
 import { Coach } from '../models/coach';
+import { DocumentService } from '../document.service';
 
 @Component({
   selector: 'app-control-component',
   templateUrl: './control-component.component.html',
-  providers: [DataService],
+  providers: [DataService, DocumentService],
   styleUrls: ['./control-component.component.css'],
 })
 export class ControlComponentComponent implements OnInit {
@@ -26,7 +27,10 @@ export class ControlComponentComponent implements OnInit {
   coaches: Coach[] = [];
   observablePlayers: Observable<Player[]>;
   players: Player[] = [];
-  constructor(private dataService: DataService) { }
+  currentTeamId: Number = -1;
+  currentCountryId: Number = -1;
+  currentLeagueId: Number = -1;
+  constructor(private dataService: DataService, private docService: DocumentService) { }
 
   ngOnInit() {
     this.getCountryList();
@@ -44,6 +48,7 @@ export class ControlComponentComponent implements OnInit {
   }
   onCountryChange(event) {
     let value = event.target.value;
+    this.currentCountryId = value;
     if (value !== '-1') {
       this.observableLeagues = this.dataService.getLeagueByCountry(value);
       this.observableLeagues.subscribe(
@@ -56,6 +61,7 @@ export class ControlComponentComponent implements OnInit {
   }
   onLeagueChange(event) {
     let value = event.target.value;
+    this.currentLeagueId = value;
     if (value !== '-1') {
       this.observableTeams = this.dataService.getTeamByLeague(value);
       this.observableTeams.subscribe(
@@ -67,6 +73,7 @@ export class ControlComponentComponent implements OnInit {
   }
   onTeamChange(event) {
     let value = event.target.value;
+    this.currentTeamId = value;
     if (value !== '-1') {
       this.observablePlayers = this.dataService.getPlayerByTeam(value);
       this.observablePlayers.subscribe(
@@ -86,6 +93,24 @@ export class ControlComponentComponent implements OnInit {
     this.leagues = [];
     this.teams = [];
     this.coaches = [];
-    this.teams = [];
+    this.players = [];
+  }
+  generateTeamDoc() {
+    if (this.currentTeamId !== -1){
+    var teamObject = this.teams.filter((el)=>el.id == this.currentTeamId);
+    this.docService.getTeamDocument(this.currentTeamId, teamObject[0]["name"]);
+    }
+  }
+  generateLeagueDoc() {
+    if (this.currentLeagueId !== -1) {
+    var leagueObject = this.leagues.filter((el)=>el.id == this.currentLeagueId);
+    this.docService.getLeagueDocument(this.currentLeagueId, leagueObject[0]["name"]);
+    }
+  }
+  generateCountryDoc() {
+    if (this.currentCountryId !== -1) {
+    var countryObject = this.countries.filter((el)=>el.id == this.currentCountryId);
+    this.docService.getCountryDocument(this.currentCountryId, countryObject[0]["name"]);
+    }
   }
 }

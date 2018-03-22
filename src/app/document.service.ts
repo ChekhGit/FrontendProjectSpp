@@ -24,6 +24,21 @@ export class DocumentService {
     this.http.get('http://localhost:8081/document/coach/' + id + '/report').subscribe(
       data => this.checkStatus(data['fileId'], '.pdf'));
   }
+  getTeamDocument(id,infoName){
+    this.infoName = infoName;
+    this.http.get('http://localhost:8081/document/team/' + id + '/report').subscribe(
+      data => this.checkStatus(data['fileId'], '.xls'));
+  }
+  getLeagueDocument(id,infoName){
+    this.infoName = infoName;
+    this.http.get('http://localhost:8081/document/league/' + id + '/report').subscribe(
+      data => this.checkStatus(data['fileId'], '.xls'));
+  }
+  getCountryDocument(id,infoName){
+    this.infoName = infoName;
+    this.http.get('http://localhost:8081/document/country/' + id + '/report').subscribe(
+      data => this.checkStatus(data['fileId'], '.xls'));
+  }
 
   private checkStatus(id, format) {
     let observ = this.http.get('http://localhost:8081/document/' + id + '/check').

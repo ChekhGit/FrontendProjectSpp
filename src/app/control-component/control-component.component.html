@@ -1,8 +1,9 @@
 <div class="container">
 	<div class="row col-lg-offset-3">
-		<div class="col-lg-4">
-			<div class="form-group">
-				<div class="row">
+		<!-- <div class="col-lg-4"> -->
+		<div class="form-group">
+			<div class="row">
+				<div class="col-lg-3">
 					<h3>
 						<span class="label">Country
 							<span class="badge"></span>
@@ -13,18 +14,29 @@
 						<option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
 					</select>
 				</div>
-				<div class="row">
+				<div class="container col-lg-9">
+					<app-table-country-component [countries]="countries"></app-table-country-component>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3">
 					<h3>
 						<span class="label">League
 							<span class="badge"></span>
 						</span>
 					</h3>
+
 					<select class="form-control" id="league" required (change)="onLeagueChange($event)">
 						<option value="-1">--no value--</option>
 						<option *ngFor="let league of leagues" [value]="league.id">{{league.name}}</option>
 					</select>
 				</div>
-				<div class="row">
+				<div class="container col-lg-9">
+					<app-table-league-component [leagues]="leagues"></app-table-league-component>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3">
 					<h3>
 						<span class="label">Team
 							<span class="badge"></span>
@@ -35,19 +47,38 @@
 						<option *ngFor="let team of teams" [value]="team.id">{{team.name}}</option>
 					</select>
 				</div>
-				
-				<div class="row">
-					<button class="btn btn-info clear-all" (click)="clearAll()">Clear</button>
+				<div class="container col-lg-9">
+					<app-table-team-component [teams]="teams"></app-table-team-component>
 				</div>
-			
 			</div>
+			<div class="row">
+				<div class="col-lg-3">
+
+				</div>
+				<div class="container col-lg-9">
+					<app-table-player-component [players]="players"></app-table-player-component>
+					<app-table-coach-component [coaches]="coaches"></app-table-coach-component>
+				</div>
+			</div>
+			<div class="row">
+				<button class="btn btn-info clear-all" (click)="clearAll()">Clear</button>
+			</div>
+			<div class="row">
+				<button class="btn btn-info clear-all" (click)="generateTeamDoc()">Get Team Doc</button>
+			</div>
+			<div class="row">
+				<button class="btn btn-info clear-all" (click)="generateLeagueDoc()">Get League Doc</button>
+			</div>
+			<div class="row">
+				<button class="btn btn-info clear-all" (click)="generateCountryDoc()">Get Country Doc</button>
+			</div>
+
 		</div>
-		<div class="container col-lg-8">
-			  	<app-table-country-component [countries] = "countries"></app-table-country-component>
-			 	<app-table-league-component [leagues] = "leagues"></app-table-league-component>
-				<app-table-team-component [teams] = "teams"></app-table-team-component>
-				<app-table-player-component [players] = "players"></app-table-player-component>
-				<app-table-coach-component [coaches] = "coaches"></app-table-coach-component>
-		</div>
+		<!-- </div> -->
+		<!-- <div class="container col-lg-8"> -->
+
+
+
+		<!-- </div> -->
 	</div>
 </div>

@@ -11,7 +11,6 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./table-country-component.component.css']
 })
 export class TableCountryComponentComponent implements OnInit {
-
   @Input() private countries: any[];
   displayedColumns = ['name'];
   dataSource ;

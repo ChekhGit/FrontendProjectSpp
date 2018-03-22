@@ -22,6 +22,7 @@ import { TableLeagueComponentComponent } from './table-league-component/table-le
 import { TableTeamComponentComponent } from './table-team-component/table-team-component.component';
 import { TablePlayerComponentComponent } from './table-player-component/table-player-component.component';
 import { TableCoachComponentComponent } from './table-coach-component/table-coach-component.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,9 @@ import { TableCoachComponentComponent } from './table-coach-component/table-coac
     MatTableModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    AppRoutingModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
