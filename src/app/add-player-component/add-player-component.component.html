@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row ">
+    <div class="form-group  col-md-10">
+      <div class="col-md-5">
+      <label for="name" class="control-label">Name</label>
+      <input #nameBox type="email" class="form-control" id="name" placeholder="Name" required>
+      <label for="surname" class="control-label">Surname</label>
+      <input #surnameBox type="email" class="form-control" id="surname" placeholder="Surname" required>
+      <label for="losts" class="control-label">Losts</label>
+      <input #lostsBox type="email" class="form-control" id="losts" placeholder="Losts" required>
+      <label for="wins" class="control-label">Wins</label>
+      <input #winsBox type="email" class="form-control" id="wins" placeholder="Wins" required>
+      <label for="draws" class="control-label">Draws</label>
+      <input #drawsBox type="email" class="form-control" id="draws" placeholder="Draws" required>
+    </div>
+    <div class="col-md-5">
+        <label for="goals" class="control-label">Goals</label>
+        <input #goalsBox type="email" class="form-control" id="goals" placeholder="Goals" required>
+        <label for="passes" class="control-label">Passes</label>
+        <input #passesBox type="email" class="form-control" id="passes" placeholder="Passes" required>
+        <label for="red" class="control-label">Red cards</label>
+        <input #redBox type="email" class="form-control" id="red" placeholder="Red cards" required>
+        <label for="yellow" class="control-label">Yellow cards</label>
+        <input #yellowBox type="email" class="form-control" id="yellow" placeholder="Yellow cards" required>
+        <label for="position" class="control-label">Position</label>
+        <select class="form-control" id="position" required (change)="onPositionChange($event)">
+            <option value="-1">--no value--</option>
+            <option *ngFor="let pos of positions" [value]="pos.id">{{pos.name}}</option>
+          </select>
+      </div>
+    </div>
+      
+    </div>
+    <button class="btn btn-danger" (click)="addPlayer(nameBox.value,surnameBox.value,lostsBox.value,winsBox.value,drawsBox.value,goalsBox.value,passesBox.value,redBox.value, yellowBox.value)">Add player</button>
+</div>

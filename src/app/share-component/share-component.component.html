@@ -1,10 +1,9 @@
 <div class="container">
-        <div class="row">
-        <div class="form-group">
+        <div class="row ">
+        <div class="form-group  col-md-3">
           <label for="inputEmail" class="control-label">Share it:</label>
           <input #emailBox type="email" class="form-control" id="inputEmail" placeholder="Email" [style.border]="isCorrectEmail ? 'none' : '2px solid red'" data-error="Email is incorrect!" 
           required>
-          <div ></div>
         </div>
           <button class="btn btn-danger" (click)="sendMessage(emailBox.value)">Share</button>
         </div>

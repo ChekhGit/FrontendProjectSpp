@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Country } from '../models/countries';
 import { League } from '../models/league';
+import { Coach } from '../models/coach';
 import { Team } from '../models/team';
 import { Player } from '../models/player';
 import { DataService } from '../data.service';
-import { ThrowStmt } from '@angular/compiler';
-import { TableCountryComponentComponent } from '../table-country-component/table-country-component.component';
-import { Coach } from '../models/coach';
 import { DocumentService } from '../document.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { AddCountryDialogComponentComponent } from '../add-country-dialog-component/add-country-dialog-component.component';
+import { MatDialog } from '@angular/material';
+import { AddCountryComponentComponent } from '../add-country-component/add-country-component.component';
 
 @Component({
-  selector: 'app-control-component',
-  templateUrl: './control-component.component.html',
-  providers: [DataService, DocumentService,MatDialog, AddCountryDialogComponentComponent],
-  styleUrls: ['./control-component.component.css'],
+  selector: 'app-update-db-component',
+  templateUrl: './update-db-component.component.html',
+  providers: [DataService, DocumentService,MatDialog],
+  styleUrls: ['./update-db-component.component.css']
 })
-export class ControlComponentComponent implements OnInit {
+export class UpdateDbComponentComponent implements OnInit {
+  @ViewChild(AddCountryComponentComponent) noteCanvas: AddCountryComponentComponent;
+
   observableCoutries: Observable<Country[]>;
   countries: Country[] = [];
   observableLeagues: Observable<League[]>;
@@ -29,9 +29,13 @@ export class ControlComponentComponent implements OnInit {
   coaches: Coach[] = [];
   observablePlayers: Observable<Player[]>;
   players: Player[] = [];
+
+  observableDelete: Observable<boolean>;
+
   currentTeamId: Number = -1;
   currentCountryId: Number = -1;
   currentLeagueId: Number = -1;
+  currentPlayerId: Number = -1;
   constructor(private dataService: DataService, private docService: DocumentService,
     public dialog: MatDialog) { }
 
@@ -48,6 +52,24 @@ export class ControlComponentComponent implements OnInit {
         this.countries = countries;
       }
     );
+  }
+  getLeaguesList(value) {
+    this.observableLeagues = this.dataService.getLeagueByCountry(value);
+      this.observableLeagues.subscribe(
+        (leagues) => this.leagues = leagues
+      );
+  }
+  getTeamsList(value) {
+    this.observableTeams = this.dataService.getTeamByLeague(value);
+      this.observableTeams.subscribe(
+        (teams) => this.teams = teams
+      );
+  }
+  getPlayersList(value) {
+    this.observablePlayers = this.dataService.getPlayerByTeam(value);
+      this.observablePlayers.subscribe(
+        (players) => this.players = players
+      );
   }
   onCountryChange(event) {
     let value = event.target.value;
@@ -90,6 +112,10 @@ export class ControlComponentComponent implements OnInit {
     this.players = [];
     this.coaches = [];
   }
+  onPlayerChange(event) {
+    let value = event.target.value;
+    this.currentPlayerId = value;
+  }
   clearAll() {
     this.countries = [];
     this.getCountryList();
@@ -116,14 +142,33 @@ export class ControlComponentComponent implements OnInit {
     this.docService.getCountryDocument(this.currentCountryId, countryObject[0]["name"]);
     }
   }
-  openCountryDialog(){
-    const dialogRef = this.dialog.open(AddCountryDialogComponentComponent, {
-        height: '250px',
-        width: '100px'
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+  deleteCountry() {
+      this.observableDelete = this.dataService.deleteCountry(this.currentCountryId);
+      this.observableDelete.subscribe(
+        (result) => {this.countries = [];
+          this.getCountryList();}
+      );
+  }
+  deleteLeague() {
+    this.observableDelete = this.dataService.deleteLeague(this.currentLeagueId);
+      this.observableDelete.subscribe(
+        (result) => {this.leagues = [];
+          this.getLeaguesList(this.currentCountryId);}
+      );
+  }
+  deleteTeam() {
+    this.observableDelete = this.dataService.deleteTeam(this.currentTeamId);
+      this.observableDelete.subscribe(
+        (result) => {this.teams = [];
+          this.getTeamsList(this.currentLeagueId);}
+      );
+  }
+  deletePlayer() {
+    this.observableDelete = this.dataService.deletePlayer(this.currentPlayerId);
+      this.observableDelete.subscribe(
+        (result) => {this.players = [];
+          this.getPlayersList(this.currentTeamId);}
+      );
   }
   
 }

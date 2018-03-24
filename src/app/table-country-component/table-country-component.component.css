@@ -23,3 +23,6 @@
  mat-header-cell, mat-cell {
      color: white;
  }
+ .mat-column-select {
+  overflow: visible;
+}

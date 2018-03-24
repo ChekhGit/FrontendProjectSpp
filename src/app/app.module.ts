@@ -7,6 +7,7 @@ import {MatTableModule} from '@angular/material/table';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { TabsComponentStatisticComponent } from './tabs-component-statistic/tabs-component-statistic.component';
@@ -24,6 +25,13 @@ import { TablePlayerComponentComponent } from './table-player-component/table-pl
 import { TableCoachComponentComponent } from './table-coach-component/table-coach-component.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { SubscribeComponentComponent } from './subscribe-component/subscribe-component.component';
+import { AddCountryDialogComponentComponent } from './add-country-dialog-component/add-country-dialog-component.component';
+import { UpdateDbComponentComponent } from './update-db-component/update-db-component.component';
+import { AddCountryComponentComponent } from './add-country-component/add-country-component.component';
+import { AddLeagueComponentComponent } from './add-league-component/add-league-component.component';
+import { AddTeamComponentComponent } from './add-team-component/add-team-component.component';
+import { AddPlayerComponentComponent } from './add-player-component/add-player-component.component';
+import { AddCoachComponentComponent } from './add-coach-component/add-coach-component.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +49,14 @@ import { SubscribeComponentComponent } from './subscribe-component/subscribe-com
     TableTeamComponentComponent,
     TablePlayerComponentComponent,
     TableCoachComponentComponent,
-    SubscribeComponentComponent
+    SubscribeComponentComponent,
+    AddCountryDialogComponentComponent,
+    UpdateDbComponentComponent,
+    AddCountryComponentComponent,
+    AddLeagueComponentComponent,
+    AddTeamComponentComponent,
+    AddPlayerComponentComponent,
+    AddCoachComponentComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -51,8 +66,11 @@ import { SubscribeComponentComponent } from './subscribe-component/subscribe-com
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
-    AppRoutingModule
-    
+    AppRoutingModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    AddCountryDialogComponentComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
