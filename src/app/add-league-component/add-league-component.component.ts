@@ -19,6 +19,14 @@ export class AddLeagueComponentComponent implements OnInit {
   ngOnInit() {
   }
   addLeague(leagueName) {
+    if (this.countryId == -1){
+      alert("Please, select country!");
+        return;
+    }
+    if (leagueName == '') {
+      alert("Field is empty!");
+        return;
+    }
     this.observable = this.dataService.addLeague(leagueName, this.countryId);
     this.observable.subscribe(
       (res) => {

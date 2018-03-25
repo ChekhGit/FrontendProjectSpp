@@ -1,10 +1,8 @@
-<div class="container">
-    <div class="row ">
-    <div class="form-group  col-md-3">
-      <label for="country-name" class="control-label">Name</label>
-      <input #nameBox type="email" class="form-control" id="country-name" placeholder="Name" required>
-    </div>
-      
-    </div>
-    <button class="btn btn-danger" (click)="addCountry(nameBox.value)">Add country</button>
+<div class="row ">
+  <div class="form-group  col-md-4">
+    <label for="country-name" class="control-label">Name</label>
+    <input #nameBox type="email" class="form-control" id="country-name"  placeholder="Name" required>
+  </div>
+
 </div>
+<button class="btn btn-danger" (click)="addCountry(nameBox.value)" (click)="nameBox.value = ''">Add country</button>

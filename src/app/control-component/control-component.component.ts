@@ -10,12 +10,11 @@ import { TableCountryComponentComponent } from '../table-country-component/table
 import { Coach } from '../models/coach';
 import { DocumentService } from '../document.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { AddCountryDialogComponentComponent } from '../add-country-dialog-component/add-country-dialog-component.component';
 
 @Component({
   selector: 'app-control-component',
   templateUrl: './control-component.component.html',
-  providers: [DataService, DocumentService,MatDialog, AddCountryDialogComponentComponent],
+  providers: [DataService, DocumentService,MatDialog],
   styleUrls: ['./control-component.component.css'],
 })
 export class ControlComponentComponent implements OnInit {
@@ -115,15 +114,6 @@ export class ControlComponentComponent implements OnInit {
     var countryObject = this.countries.filter((el)=>el.id == this.currentCountryId);
     this.docService.getCountryDocument(this.currentCountryId, countryObject[0]["name"]);
     }
-  }
-  openCountryDialog(){
-    const dialogRef = this.dialog.open(AddCountryDialogComponentComponent, {
-        height: '250px',
-        width: '100px'
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
   }
   
 }

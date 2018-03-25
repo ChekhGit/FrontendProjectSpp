@@ -18,8 +18,16 @@ export class AddTeamComponentComponent implements OnInit {
 
   ngOnInit() {
   }
-  addTeam(leagueName) {
-    this.observable = this.dataService.addTeam(leagueName, this.leagueId);
+  addTeam(teamName) {
+    if (this.leagueId == -1){
+      alert("Please, select league!");
+        return;
+    }
+    if (teamName == '') {
+      alert("Field is empty!");
+        return;
+    }
+    this.observable = this.dataService.addTeam(teamName, this.leagueId);
     this.observable.subscribe(
       (res) => {
         this.updateTeams.emit(this.leagueId);

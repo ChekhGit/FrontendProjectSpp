@@ -1,10 +1,9 @@
-<div class="container">
+
     <div class="row ">
-    <div class="form-group  col-md-3">
+    <div class="form-group  col-md-4">
       <label for="name" class="control-label">Name</label>
       <input #nameBox type="email" class="form-control" id="name" placeholder="Name" required>
     </div>
       
     </div>
-    <button class="btn btn-danger" (click)="addTeam(nameBox.value)">Add team</button>
-</div>
+    <button class="btn btn-danger" (click)="addTeam(nameBox.value)" (click)="nameBox.value = ''">Add team</button>

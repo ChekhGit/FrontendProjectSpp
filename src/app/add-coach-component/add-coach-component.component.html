@@ -1,7 +1,6 @@
-<div class="container">
-    <div class="row ">
-    <div class="form-group  col-md-10">
-      <div class="col-md-5">
+<div class="row ">
+  <div class="form-group  col-md-10">
+    <div class="col-md-5">
       <label for="name" class="control-label">Name</label>
       <input #nameBox type="email" class="form-control" id="name" placeholder="Name" required>
       <label for="surname" class="control-label">Surname</label>
@@ -11,20 +10,20 @@
       <label for="years" class="control-label">Years old</label>
       <input #yearsBox type="email" class="form-control" id="years" placeholder="Years old" required>
 
-      
+
     </div>
     <div class="col-md-5">
-        <label for="losts" class="control-label">Losts</label>
-        <input #lostsBox type="email" class="form-control" id="losts" placeholder="Losts" required>
-        <label for="wins" class="control-label">Wins</label>
-        <input #winsBox type="email" class="form-control" id="wins" placeholder="Wins" required>
-        <label for="draws" class="control-label">Draws</label>
-        <input #drawsBox type="email" class="form-control" id="draws" placeholder="Draws" required>
+      <label for="losts" class="control-label">Losts</label>
+      <input #lostsBox type="email" class="form-control" id="losts" placeholder="Losts" required>
+      <label for="wins" class="control-label">Wins</label>
+      <input #winsBox type="email" class="form-control" id="wins" placeholder="Wins" required>
+      <label for="draws" class="control-label">Draws</label>
+      <input #drawsBox type="email" class="form-control" id="draws" placeholder="Draws" required>
 
 
-      </div>
     </div>
-      
-    </div>
-    <button class="btn btn-danger" (click)="addCoach(nameBox.value,surnameBox.value,lostsBox.value,winsBox.value,drawsBox.value,yearsBox.value,titlesBox.value)">Add player</button>
+  </div>
+
 </div>
+<button class="btn btn-danger" (click)="addCoach(nameBox.value,surnameBox.value,lostsBox.value,winsBox.value,drawsBox.value,yearsBox.value,titlesBox.value)"
+(click)="nameBox.value=''" (click)="surnameBox.value=''" (click)="lostsBox.value=''" (click)="winsBox.value=''" (click)="drawsBox.value=''" (click)="yearsBox.value=''" (click)="titlesBox.value=''">Add coach</button>

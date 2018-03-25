@@ -16,11 +16,15 @@ export class SubscribeComponentComponent implements OnInit {
   }
 
   subscribe(email) {
-    if (this.mailService.isValidEmail(email)) {
-      this.isCorrectEmail = true;
-      this.mailService.subscribeTo(this.currentTeamId, email);
+    if (this.currentTeamId >= 0) {
+      if (this.mailService.isValidEmail(email)) {
+        this.isCorrectEmail = true;
+        this.mailService.subscribeTo(this.currentTeamId, email);
+      } else {
+        this.isCorrectEmail = false;
+      }
     } else {
-      this.isCorrectEmail = false;
+      alert("Please, choose your team!")
     }
   }
 }

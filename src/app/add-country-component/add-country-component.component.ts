@@ -12,16 +12,22 @@ import { Observable } from 'rxjs/Observable';
 export class AddCountryComponentComponent implements OnInit {
   @Output() updateCountries = new EventEmitter<string>();
   observable: Observable<boolean>;
+  name: string = '';
   constructor(private dataService: DataService) {
   }
 
   ngOnInit() {
   }
   addCountry(countryName) {
+    if (countryName == '') {
+      alert("Field is empty!");
+        return;
+    }
     this.observable = this.dataService.addCountry(countryName);
     this.observable.subscribe(
       (res) => {
         this.updateCountries.emit();
+        this.name = ""
       });
   }
 }

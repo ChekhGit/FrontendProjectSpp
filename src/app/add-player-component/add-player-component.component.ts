@@ -36,6 +36,10 @@ export class AddPlayerComponentComponent implements OnInit {
     this.currentPosId = event.target.value;
   }
   addPlayer(name,surname,losts, wins, draws,goals,passes,reds,yellows) {
+    if (this.teamId == -1){
+      alert("Please, select team!");
+        return;
+    }
     var obj = {
       name: name,
       surname:surname,
@@ -48,6 +52,16 @@ export class AddPlayerComponentComponent implements OnInit {
       redCards:reds,
       yellowCards:yellows,
       idTeam:this.teamId
+    }
+    for (let prop in obj) {
+      if (obj[prop] == ''){
+        alert("Some fields are empty!");
+        return;
+      }
+    }
+    if (this.currentPosId == -1){
+      alert("Some fields are empty!");
+        return;
     }
     this.observable = this.dataService.addPlayer(obj, this.teamId);
     this.observable.subscribe(

@@ -1,4 +1,4 @@
-<div class="container">
+
     <div class="row ">
     <div class="form-group  col-md-10">
       <div class="col-md-5">
@@ -31,5 +31,5 @@
     </div>
       
     </div>
-    <button class="btn btn-danger" (click)="addPlayer(nameBox.value,surnameBox.value,lostsBox.value,winsBox.value,drawsBox.value,goalsBox.value,passesBox.value,redBox.value, yellowBox.value)">Add player</button>
-</div>
+    <button class="btn btn-danger" (click)="addPlayer(nameBox.value,surnameBox.value,lostsBox.value,winsBox.value,drawsBox.value,goalsBox.value,passesBox.value,redBox.value, yellowBox.value)"
+    (click)="nameBox.value=''" (click)="surnameBox.value=''" (click)="lostsBox.value=''" (click)="winsBox.value=''" (click)="drawsBox.value=''" (click)="goalsBox.value=''" (click)="passesBox.value=''" (click)="redBox.value=''" (click)="yellowBox.value=''" >Add player</button>

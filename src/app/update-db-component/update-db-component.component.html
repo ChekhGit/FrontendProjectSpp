@@ -12,90 +12,92 @@
             <option value="-1">--no value--</option>
             <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
           </select>
-          <div class="row">
-            <button class="btn btn-info " (click)="deleteCountry()">Delete country</button>
-          </div>
+          <button class="btn btn-info " (click)="deleteCountry()">Delete country</button>
         </div>
-        <div class="container col-lg-9">
+        <div class="container col-md-7 col-md-offset-2">
           <app-add-country-component (updateCountries)="getCountryList($event)"></app-add-country-component>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <h3>
-            <span class="label">League
-              <span class="badge"></span>
-            </span>
-          </h3>
-          <select class="form-control" id="league" required (change)="onLeagueChange($event)">
-            <option value="-1">--no value--</option>
-            <option *ngFor="let league of leagues" [value]="league.id">{{league.name}}</option>
-          </select>
-          <div class="row">
+      <hr>
+      <div>
+        <div class="row">
+          <div class="col-lg-3">
+            <h3>
+              <span class="label">League
+                <span class="badge"></span>
+              </span>
+            </h3>
+            <select class="form-control" id="league" required (change)="onLeagueChange($event)">
+              <option value="-1">--no value--</option>
+              <option *ngFor="let league of leagues" [value]="league.id">{{league.name}}</option>
+            </select>
             <button class="btn btn-info " (click)="deleteLeague()">Delete league</button>
           </div>
+          <div class="container col-md-7 col-md-offset-2">
+            <app-add-league-component (updateLeagues)="getLeaguesList($event)" [countryId]="currentCountryId"></app-add-league-component>
+          </div>
         </div>
-        <div class="container col-lg-9">
-          <app-add-league-component (updateLeagues)="getLeaguesList($event)" [countryId]="currentCountryId"></app-add-league-component>
-        </div>
+        <hr>
       </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <h3>
-            <span class="label">Team
-              <span class="badge"></span>
-            </span>
-          </h3>
-          <select class="form-control" id="team" required (change)="onTeamChange($event)">
-            <option value="-1">--no value--</option>
-            <option *ngFor="let team of teams" [value]="team.id">{{team.name}}</option>
-          </select>
-          <div class="row">
+      <div >
+        <div class="row">
+          <div class="col-lg-3">
+            <h3>
+              <span class="label">Team
+                <span class="badge"></span>
+              </span>
+            </h3>
+            <select class="form-control" id="team" required (change)="onTeamChange($event)">
+              <option value="-1">--no value--</option>
+              <option *ngFor="let team of teams" [value]="team.id">{{team.name}}</option>
+            </select>
             <button class="btn btn-info " (click)="deleteTeam()">Delete team</button>
           </div>
-        </div>
-        <div class="container col-lg-9">
-          <app-add-team-component (updateTeams)="getTeamsList($event)" [leagueId]="currentLeagueId"></app-add-team-component>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-            <h3>
-                <span class="label">Player
-                  <span class="badge"></span>
-                </span>
-              </h3>
-              <select class="form-control" id="player" required (change)="onPlayerChange($event)">
-                <option value="-1">--no value--</option>
-                <option *ngFor="let player of players" [value]="player.id">{{player.name}} {{player.surname}}</option>
-              </select>
-              <div class="row">
-                <button class="btn btn-info " (click)="deletePlayer()">Delete player</button>
-              </div>
-        </div>
-        <div class="container col-lg-9">
-          <app-add-player-component (updatePlayers)="getPlayersList($event)" [teamId]="currentTeamId"></app-add-player-component>
-        </div>
-      </div>
-      <div class="row">
-          <div class="col-lg-3">
-              <h3>
-                  <span class="label">Coach
-                    <span class="badge"></span>
-                  </span>
-                </h3>
-                <select class="form-control" id="coach" required (change)="onCoachChange($event)">
-                  <option value="-1">--no value--</option>
-                  <option *ngFor="let coach of coaches" [value]="coach.id">{{coach.name}} {{coach.surname}}</option>
-                </select>
-                <div class="row">
-                  <button class="btn btn-info " (click)="deleteCoach()">Delete coach</button>
-                </div>
+          <div class="container col-md-7 col-md-offset-2">
+            <app-add-team-component (updateTeams)="getTeamsList($event)" [leagueId]="currentLeagueId"></app-add-team-component>
           </div>
-        <div class="container col-lg-9">
+        </div>
+        <hr>
+      </div>
+      <div>
+        <div class="row">
+          <div class="col-lg-3">
+            <h3>
+              <span class="label">Player
+                <span class="badge"></span>
+              </span>
+            </h3>
+            <select class="form-control" id="player" required (change)="onPlayerChange($event)">
+              <option value="-1">--no value--</option>
+              <option *ngFor="let player of players" [value]="player.id">{{player.name}} {{player.surname}}</option>
+            </select>
+            <button class="btn btn-info " (click)="deletePlayer()">Delete player</button>
+          </div>
+          <div class="container col-md-7 col-md-offset-2">
+            <app-add-player-component (updatePlayers)="getPlayersList($event)" [teamId]="currentTeamId"></app-add-player-component>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div>
+        <div class="row">
+          <div class="col-lg-3">
+            <h3>
+              <span class="label">Coach
+                <span class="badge"></span>
+              </span>
+            </h3>
+            <select class="form-control" id="coach" required (change)="onCoachChange($event)">
+              <option value="-1">--no value--</option>
+              <option *ngFor="let coach of coaches" [value]="coach.id">{{coach.name}} {{coach.surname}}</option>
+            </select>
+            <button class="btn btn-info " (click)="deleteCoach()">Delete coach</button>
+          </div>
+          <div class="container col-md-7 col-md-offset-2">
             <app-add-coach-component (updateCoaches)="getCoachesList($event)" [teamId]="currentTeamId"></app-add-coach-component>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>

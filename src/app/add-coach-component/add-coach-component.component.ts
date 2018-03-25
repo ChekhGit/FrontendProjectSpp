@@ -22,6 +22,10 @@ export class AddCoachComponentComponent implements OnInit {
    
   }
   addCoach(name,surname,losts, wins, draws,years,titles) {
+    if (this.teamId == -1){
+      alert("Please, select team!");
+        return;
+    }
     var obj = {
       name: name,
       surname:surname,
@@ -31,6 +35,12 @@ export class AddCoachComponentComponent implements OnInit {
       yearsOld:years,
       titles:titles,
       idTeam:this.teamId
+    }
+    for (let prop in obj) {
+      if (obj[prop] == ''){
+        alert("Some fields are empty!");
+        return;
+      }
     }
     this.observable = this.dataService.addCoach(obj, this.teamId);
     this.observable.subscribe(

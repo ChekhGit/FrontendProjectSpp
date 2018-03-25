@@ -5,6 +5,6 @@
           <input #emailBox type="email" class="form-control" id="inputEmail" placeholder="Email" [style.border]="isCorrectEmail ? 'none' : '2px solid red'" data-error="Email is incorrect!" 
           required>
         </div>
-          <button class="btn btn-danger" (click)="sendMessage(emailBox.value)">Share</button>
+          <button class="btn btn-danger" (click)="sendMessage(emailBox.value)" (click)="emailBox.value=''">Share</button>
         </div>
 </div>

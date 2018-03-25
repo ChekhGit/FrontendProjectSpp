@@ -25,7 +25,6 @@ import { TablePlayerComponentComponent } from './table-player-component/table-pl
 import { TableCoachComponentComponent } from './table-coach-component/table-coach-component.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { SubscribeComponentComponent } from './subscribe-component/subscribe-component.component';
-import { AddCountryDialogComponentComponent } from './add-country-dialog-component/add-country-dialog-component.component';
 import { UpdateDbComponentComponent } from './update-db-component/update-db-component.component';
 import { AddCountryComponentComponent } from './add-country-component/add-country-component.component';
 import { AddLeagueComponentComponent } from './add-league-component/add-league-component.component';
@@ -50,7 +49,6 @@ import { AddCoachComponentComponent } from './add-coach-component/add-coach-comp
     TablePlayerComponentComponent,
     TableCoachComponentComponent,
     SubscribeComponentComponent,
-    AddCountryDialogComponentComponent,
     UpdateDbComponentComponent,
     AddCountryComponentComponent,
     AddLeagueComponentComponent,
@@ -68,9 +66,6 @@ import { AddCoachComponentComponent } from './add-coach-component/add-coach-comp
     MatInputModule,
     AppRoutingModule,
     MatDialogModule
-  ],
-  entryComponents: [
-    AddCountryDialogComponentComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

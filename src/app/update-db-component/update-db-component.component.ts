@@ -13,7 +13,7 @@ import { AddCountryComponentComponent } from '../add-country-component/add-count
 @Component({
   selector: 'app-update-db-component',
   templateUrl: './update-db-component.component.html',
-  providers: [DataService, DocumentService,MatDialog],
+  providers: [DataService, DocumentService, MatDialog],
   styleUrls: ['./update-db-component.component.css']
 })
 export class UpdateDbComponentComponent implements OnInit {
@@ -56,27 +56,27 @@ export class UpdateDbComponentComponent implements OnInit {
   }
   getLeaguesList(value) {
     this.observableLeagues = this.dataService.getLeagueByCountry(value);
-      this.observableLeagues.subscribe(
-        (leagues) => this.leagues = leagues
-      );
+    this.observableLeagues.subscribe(
+      (leagues) => this.leagues = leagues
+    );
   }
   getTeamsList(value) {
     this.observableTeams = this.dataService.getTeamByLeague(value);
-      this.observableTeams.subscribe(
-        (teams) => this.teams = teams
-      );
+    this.observableTeams.subscribe(
+      (teams) => this.teams = teams
+    );
   }
   getPlayersList(value) {
     this.observablePlayers = this.dataService.getPlayerByTeam(value);
-      this.observablePlayers.subscribe(
-        (players) => this.players = players
-      );
+    this.observablePlayers.subscribe(
+      (players) => this.players = players
+    );
   }
   getCoachesList(value) {
     this.observableCoaches = this.dataService.getCoachByTeam(value);
-      this.observableCoaches.subscribe(
-        (coaches) => this.coaches = coaches
-      );
+    this.observableCoaches.subscribe(
+      (coaches) => this.coaches = coaches
+    );
   }
   onCountryChange(event) {
     let value = event.target.value;
@@ -90,6 +90,8 @@ export class UpdateDbComponentComponent implements OnInit {
     this.leagues = [];
     this.teams = [];
     this.coaches = [];
+    this.players = [];
+    this.coaches = [];
   }
   onLeagueChange(event) {
     let value = event.target.value;
@@ -102,6 +104,7 @@ export class UpdateDbComponentComponent implements OnInit {
     }
     this.teams = [];
     this.coaches = [];
+    this.players = [];
   }
   onTeamChange(event) {
     let value = event.target.value;
@@ -136,56 +139,91 @@ export class UpdateDbComponentComponent implements OnInit {
     this.players = [];
   }
   generateTeamDoc() {
-    if (this.currentTeamId !== -1){
-    var teamObject = this.teams.filter((el)=>el.id == this.currentTeamId);
-    this.docService.getTeamDocument(this.currentTeamId, teamObject[0]["name"]);
+    if (this.currentTeamId !== -1) {
+      var teamObject = this.teams.filter((el) => el.id == this.currentTeamId);
+      this.docService.getTeamDocument(this.currentTeamId, teamObject[0]["name"]);
     }
   }
   generateLeagueDoc() {
     if (this.currentLeagueId !== -1) {
-    var leagueObject = this.leagues.filter((el)=>el.id == this.currentLeagueId);
-    this.docService.getLeagueDocument(this.currentLeagueId, leagueObject[0]["name"]);
+      var leagueObject = this.leagues.filter((el) => el.id == this.currentLeagueId);
+      this.docService.getLeagueDocument(this.currentLeagueId, leagueObject[0]["name"]);
     }
   }
   generateCountryDoc() {
     if (this.currentCountryId !== -1) {
-    var countryObject = this.countries.filter((el)=>el.id == this.currentCountryId);
-    this.docService.getCountryDocument(this.currentCountryId, countryObject[0]["name"]);
+      var countryObject = this.countries.filter((el) => el.id == this.currentCountryId);
+      this.docService.getCountryDocument(this.currentCountryId, countryObject[0]["name"]);
     }
   }
   deleteCountry() {
+    if (this.currentCountryId !== -1) {
       this.observableDelete = this.dataService.deleteCountry(this.currentCountryId);
       this.observableDelete.subscribe(
-        (result) => {this.countries = [];
-          this.getCountryList();}
+        (result) => {
+        this.countries = [];
+          this.getCountryList();
+          this.currentCountryId = -1;
+        }
       );
+    } else {
+      alert("Select value");
+    }
   }
   deleteLeague() {
-    this.observableDelete = this.dataService.deleteLeague(this.currentLeagueId);
+    if (this.currentLeagueId !== -1) {
+      this.observableDelete = this.dataService.deleteLeague(this.currentLeagueId);
       this.observableDelete.subscribe(
-        (result) => {this.leagues = [];
-          this.getLeaguesList(this.currentCountryId);}
+        (result) => {
+        this.leagues = [];
+          this.getLeaguesList(this.currentCountryId);
+          this.currentLeagueId = -1;
+        }
       );
+    } else {
+      alert("Select value");
+    }
   }
   deleteTeam() {
-    this.observableDelete = this.dataService.deleteTeam(this.currentTeamId);
+    if (this.currentTeamId !== -1) {
+      this.observableDelete = this.dataService.deleteTeam(this.currentTeamId);
       this.observableDelete.subscribe(
-        (result) => {this.teams = [];
-          this.getTeamsList(this.currentLeagueId);}
+        (result) => {
+        this.teams = [];
+          this.getTeamsList(this.currentLeagueId);
+          this.currentTeamId = -1;
+        }
       );
+    } else {
+      alert("Select value");
+    }
   }
   deletePlayer() {
-    this.observableDelete = this.dataService.deletePlayer(this.currentPlayerId);
+    if (this.currentPlayerId !== -1) {
+      this.observableDelete = this.dataService.deletePlayer(this.currentPlayerId);
       this.observableDelete.subscribe(
-        (result) => {this.players = [];
-          this.getPlayersList(this.currentTeamId);}
+        (result) => {
+        this.players = [];
+          this.getPlayersList(this.currentTeamId);
+          this.currentPlayerId = -1;
+        }
       );
+    } else {
+      alert("Select value");
+    }
   }
   deleteCoach() {
-    this.observableDelete = this.dataService.deleteCoach(this.currentCoachId);
+    if (this.currentCoachId !== -1) {
+      this.observableDelete = this.dataService.deleteCoach(this.currentCoachId);
       this.observableDelete.subscribe(
-        (result) => {this.coaches = [];
-          this.getCoachesList(this.currentTeamId);}
+        (result) => {
+        this.coaches = [];
+          this.getCoachesList(this.currentTeamId);
+          this.currentCoachId = -1;
+        }
       );
+    } else {
+      alert("Select value");
+    }
   }
 }
