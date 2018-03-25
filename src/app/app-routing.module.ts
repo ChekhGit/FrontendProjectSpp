@@ -6,6 +6,7 @@ import { CountrySelectComponentStatComponent } from './country-select-component-
 import { TabsComponentStatisticComponent } from './tabs-component-statistic/tabs-component-statistic.component';
 import { UpdateDbComponentComponent } from './update-db-component/update-db-component.component';
 const appRoutes: Routes = [
+  { path: '', redirectTo: '/statistic-page', pathMatch: 'full' },
   { path: 'dashboard', component:  ControlComponentComponent},
   { path: 'statistic-page', component: TabsComponentStatisticComponent },
   { path: 'update-page', component: UpdateDbComponentComponent },
