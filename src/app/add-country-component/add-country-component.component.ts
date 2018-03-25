@@ -19,9 +19,10 @@ export class AddCountryComponentComponent implements OnInit {
   ngOnInit() {
   }
   addCountry(countryName) {
+
     if (countryName == '') {
       alert("Field is empty!");
-        return;
+      return;
     }
     this.observable = this.dataService.addCountry(countryName);
     this.observable.subscribe(

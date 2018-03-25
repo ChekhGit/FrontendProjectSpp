@@ -8,4 +8,44 @@ p{
 .navbar-nav  :hover {
     font-weight:bold
 }
+h5{
+    color:#888582;
+}
+
+.search-text{
+    padding-bottom:30px;
+}
+.search-text h4{
+    color:#888582;
+    font-weight: 700;
+}
   
+footer{
+    background-color:#222222;
+    padding: 20px 0px;
+    margin-top: 50px !important;
+}
+  
+.footer-top{
+    padding-top:30px;
+    padding-bottom:10px;
+}
+  
+.footer-top a{
+    color:#FFF;
+    background:#333333; 
+    padding: 10px;
+}
+.footer-top .col-lg-2:hover .fa , .footer-top .col-md-2:hover a{
+    color:#7dabdb;
+	text-decoration:none;
+}
+  
+.copyright{
+    background-color:#f0f0f0;
+}
+  
+.copyright p{
+    font-size:12px;
+    padding:15px 0 10px 0;
+}

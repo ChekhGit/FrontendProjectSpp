@@ -98,19 +98,21 @@ export class ControlComponentComponent implements OnInit {
     this.players = [];
   }
   generateTeamDoc() {
-    if (this.currentTeamId !== -1){
+
+    if (this.currentTeamId != -1){
     var teamObject = this.teams.filter((el)=>el.id == this.currentTeamId);
     this.docService.getTeamDocument(this.currentTeamId, teamObject[0]["name"]);
     }
   }
   generateLeagueDoc() {
-    if (this.currentLeagueId !== -1) {
+    debugger;
+    if (this.currentLeagueId != -1) {
     var leagueObject = this.leagues.filter((el)=>el.id == this.currentLeagueId);
     this.docService.getLeagueDocument(this.currentLeagueId, leagueObject[0]["name"]);
     }
   }
   generateCountryDoc() {
-    if (this.currentCountryId !== -1) {
+    if (this.currentCountryId != -1) {
     var countryObject = this.countries.filter((el)=>el.id == this.currentCountryId);
     this.docService.getCountryDocument(this.currentCountryId, countryObject[0]["name"]);
     }

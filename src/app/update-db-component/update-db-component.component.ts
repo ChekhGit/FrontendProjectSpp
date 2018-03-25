@@ -164,6 +164,15 @@ export class UpdateDbComponentComponent implements OnInit {
         this.countries = [];
           this.getCountryList();
           this.currentCountryId = -1;
+          this.currentLeagueId = -1;
+
+          this.currentTeamId = -1;
+          this.currentPlayerId = -1;
+          this.currentCoachId = -1;
+          this.leagues = [];
+          this.teams = [];
+          this.coaches = [];
+          this.players = [];
         }
       );
     } else {
@@ -178,6 +187,12 @@ export class UpdateDbComponentComponent implements OnInit {
         this.leagues = [];
           this.getLeaguesList(this.currentCountryId);
           this.currentLeagueId = -1;
+          this.currentTeamId = -1;
+          this.currentPlayerId = -1;
+          this.currentCoachId = -1;
+          this.teams = [];
+          this.coaches = [];
+          this.players = [];
         }
       );
     } else {
@@ -192,6 +207,10 @@ export class UpdateDbComponentComponent implements OnInit {
         this.teams = [];
           this.getTeamsList(this.currentLeagueId);
           this.currentTeamId = -1;
+          this.currentPlayerId = -1;
+          this.currentCoachId = -1;
+          this.coaches = [];
+          this.players = [];
         }
       );
     } else {
