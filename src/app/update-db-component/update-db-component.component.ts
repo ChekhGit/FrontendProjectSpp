@@ -36,6 +36,7 @@ export class UpdateDbComponentComponent implements OnInit {
   currentCountryId: Number = -1;
   currentLeagueId: Number = -1;
   currentPlayerId: Number = -1;
+  currentCoachId: Number = -1;
   constructor(private dataService: DataService, private docService: DocumentService,
     public dialog: MatDialog) { }
 
@@ -69,6 +70,12 @@ export class UpdateDbComponentComponent implements OnInit {
     this.observablePlayers = this.dataService.getPlayerByTeam(value);
       this.observablePlayers.subscribe(
         (players) => this.players = players
+      );
+  }
+  getCoachesList(value) {
+    this.observableCoaches = this.dataService.getCoachByTeam(value);
+      this.observableCoaches.subscribe(
+        (coaches) => this.coaches = coaches
       );
   }
   onCountryChange(event) {
@@ -115,6 +122,10 @@ export class UpdateDbComponentComponent implements OnInit {
   onPlayerChange(event) {
     let value = event.target.value;
     this.currentPlayerId = value;
+  }
+  onCoachChange(event) {
+    let value = event.target.value;
+    this.currentCoachId = value;
   }
   clearAll() {
     this.countries = [];
@@ -170,5 +181,11 @@ export class UpdateDbComponentComponent implements OnInit {
           this.getPlayersList(this.currentTeamId);}
       );
   }
-  
+  deleteCoach() {
+    this.observableDelete = this.dataService.deleteCoach(this.currentCoachId);
+      this.observableDelete.subscribe(
+        (result) => {this.coaches = [];
+          this.getCoachesList(this.currentTeamId);}
+      );
+  }
 }

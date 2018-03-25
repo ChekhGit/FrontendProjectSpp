@@ -103,4 +103,12 @@ export class DataService {
     return this.http.delete('http://localhost:8081//player/' + id)
     .map((this.deleteCountryResult));
   }
+  addCoach(obj, id):Observable<boolean>  {
+    return this.http.put('http://localhost:8081//coach ', obj)
+    .map((this.addResult));
+  }
+  deleteCoach(id) :Observable<boolean>  {
+    return this.http.delete('http://localhost:8081//coach/' + id)
+    .map((this.deleteCountryResult));
+  }
 }

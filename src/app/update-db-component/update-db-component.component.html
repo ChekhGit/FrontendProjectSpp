@@ -77,6 +77,25 @@
           <app-add-player-component (updatePlayers)="getPlayersList($event)" [teamId]="currentTeamId"></app-add-player-component>
         </div>
       </div>
+      <div class="row">
+          <div class="col-lg-3">
+              <h3>
+                  <span class="label">Coach
+                    <span class="badge"></span>
+                  </span>
+                </h3>
+                <select class="form-control" id="coach" required (change)="onCoachChange($event)">
+                  <option value="-1">--no value--</option>
+                  <option *ngFor="let coach of coaches" [value]="coach.id">{{coach.name}} {{coach.surname}}</option>
+                </select>
+                <div class="row">
+                  <button class="btn btn-info " (click)="deleteCoach()">Delete coach</button>
+                </div>
+          </div>
+        <div class="container col-lg-9">
+            <app-add-coach-component (updateCoaches)="getCoachesList($event)" [teamId]="currentTeamId"></app-add-coach-component>
+          </div>
+        </div>
     </div>
   </div>
 </div>
